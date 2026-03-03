@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import { SlArrowDown } from 'react-icons/sl'
 import "../../src/index.css"
+import { IoSearch } from 'react-icons/io5';
+import { BiSolidOffer } from 'react-icons/bi';
+import { LuHandHelping } from 'react-icons/lu';
+import { MdAssignmentInd } from 'react-icons/md';
+import { IoMdCart } from 'react-icons/io';
 
 export const Header = () => {
 
@@ -18,6 +23,37 @@ export const Header = () => {
     }
 
 
+
+
+
+    const links = [
+        {
+            icon : <IoSearch />,
+            name : "Search"
+        },
+        {
+            icon : <BiSolidOffer />,
+            name : "Offers",
+            sup : "New"
+        },
+        {
+            icon : <LuHandHelping />,
+            name : "Help"
+        },
+        {
+            icon : <MdAssignmentInd />,
+            name : "Sign In"
+        },
+        {
+            icon : <IoMdCart />,
+            name : "Cart"
+        }
+        
+    ];
+
+
+
+
   return (
     <>
     <div className='black-overlay w-full h-full fixed duration-500 ' style={{
@@ -25,7 +61,10 @@ export const Header = () => {
         visibility: toggle ? 'visible': 'hidden', 
     }}   onClick={hideSideMenu}>  
 
-        <div className='white-overlay  w-[500px] h-full absolute duration-[800ms] ' style={{
+        <div  onClick={(e)=>{
+            e.stopPropagation();
+        }} 
+        className='white-overlay  w-[500px] h-full absolute duration-[800ms] ' style={{
             left: toggle ? '0%' : '-100%'
         }}>
             
@@ -38,16 +77,38 @@ export const Header = () => {
 
 
     <header className='p-12 shadow-xl'>
-        <div className='max-w-[1200px] mx-auto flex items-center'>
-            <div className='w-[100px] border border-red-500'>
+        <div className='max-w-[1300px] mx-auto flex items-center'>
+            <div className='w-[100px]'>
                 <img className='w-full'   src='images/logo.png'/>
             </div>
-            <div className='border border-blue'>
+            <div>
                 <span className='font-bold border-b-[2px] mr-1.5'>Vaishali</span> Jaipur, Rajasthan, India <SlArrowDown onClick={sideMenu}  fontSize={25}  className='inline text-[#FF7900] ml-1.5 text-[12px] cursor-pointer'/>
             </div>
 
+
+            <nav className=' flex ml-auto gap-12 list-none'>
+
+                {
+                    links.map(
+                        (link, index) => {
+                            return  <li className='flex items-center gap-2 cursor-pointer hover:text-[#FFA500] hover:scale-120  transition-all duration-300 ease-in-out'>
+                                {link.icon}
+                                {link.name}
+                                <sup>{link.sup}</sup>
+                            </li> 
+                        }
+                    )
+                }
+  
+            </nav>
+
         </div>
+
     </header>
+
+
+
+
     </>
   )
 }
