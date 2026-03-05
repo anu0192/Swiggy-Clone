@@ -76,7 +76,7 @@ export const Header = () => {
 
 
 
-    <header className='p-12 shadow-xl'>
+    <header className=' p-12 shadow-xl sticky top-0 bg-white z-[9999]'>
         <div className='max-w-[1300px] mx-auto flex items-center'>
             <div className='w-[100px]'>
                 <img className='w-full'   src='images/logo.png'/>
@@ -86,7 +86,7 @@ export const Header = () => {
             </div>
 
 
-            <nav className=' flex ml-auto gap-12 list-none'>
+            <nav className='hidden md:flex ml-auto gap-12 list-none'>
 
                 {
                     links.map(

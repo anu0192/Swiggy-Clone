@@ -59,6 +59,8 @@ export const Topres = () => {
 
 
                 </div>
+            <hr className="my-2 border-[1px] border-[#D3D3D3]"/>
+
 
               </div>
        </>
