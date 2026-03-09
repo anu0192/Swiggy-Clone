@@ -2,31 +2,19 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
 import { Card } from "./Card"
 import { useEffect, useState } from "react"
 
-export const Topres = () => {
+export const TopRes = () => {  
 
-    const [topResturent, setTopResturent] = useState([])
+    const [data, setData] = useState([])
 
     const fetchTopResturent = async() => {
        const response = await fetch("/DataJSON/restaurantChains.json")
-       const data = await response.json()      // wait for JSON
-       setTopResturent(data)
+       const apiData = await response.json()  
+       setData(apiData)
     }
 
     useEffect(()=>{
         fetchTopResturent()
     }, [])
-
-    // const [resturentSlide, setResturentSlide] = useState(0)
-
-
-
-
-
-
-    // const resturentRightSlide = () => {
-    //     setResturentSlide(resturentSlide + 4)
-
-    // } 
 
 
 
@@ -44,12 +32,12 @@ export const Topres = () => {
                </div>
               </div>
 
-                <div className="flex p-2 gap-2 overflow-hidden ">
+                <div className="flex p-2 gap-2 justify-center overflow-hidden ">
                     
                     {
-                      topResturent.map(
+                      data.map(
                         (d, index) =>{
-                           return <Card {...d} />
+                           return <Card {...d} key={index} />
                             
                         }
                       )  

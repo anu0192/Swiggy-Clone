@@ -1,42 +1,55 @@
 import React, { useEffect, useState } from 'react'
 import { Card } from './Card'
 
-export const OnlineDelivery = () => {
+export const OnlineDelivery = ({ hideHeader, setHideHeader }) => {
 
 
-const [topResturent, setTopResturent] = useState([])
+const [topRestaurant, setTopRestaurant] = useState([])
 
-    const fetchTopResturent = async() => {
+    const fetchTopRestaurant = async() => {
        const response = await fetch("/DataJSON/restaurantChains.json")
        const data = await response.json()      // wait for JSON
-       setTopResturent(data)
+       setTopRestaurant(data)
     }
 
     useEffect(()=>{
-        fetchTopResturent()
+        fetchTopRestaurant()
     }, [])
+    
+    const handelFilterSection = () =>{
+      const filter  = document.querySelector(".filter-section")
+      if(!filter) return false
+      const client  = filter.getBoundingClientRect()
 
+      if(client.top <= 0){
+        setHideHeader(true)
+      } else{
+        setHideHeader(false)
+      }
 
+    }
 
-    // The filter bar will be positioned using CSS `sticky` instead of JS.
-    // Removed isSticky state and scroll listener because the browser handles
-    // sticking automatically when the element reaches the viewport top.
+    useEffect(() =>{
+      window.addEventListener("scroll",handelFilterSection)
+     return () => window.removeEventListener("scroll",handelFilterSection)
+    }, []
+  )
+  
 
 
   return (
     <>
-    <div className="max-w-[1400px] mx-auto pt-[110px]">
+    <div className="max-w-[1200px] mx-auto pt-[15px]">
               <div className="flex items-center">
-               <div className=" font-bold text-[20px] mb-2">Resturens witih online food dellivery in Jaipur</div>
+               <div className=" font-bold text-[20px] mb-2">Restaurants with online food delivery in Jaipur</div>
             
     </div>
 
-    <div className="m-2 max-w-[1600px] mx-auto filter-section sticky top-0 z-[99999999] bg-white w-full left-0 h-[110px] border-none rounded-md">
-    <div className='p-2 flex  gap-3 pt-9'>
+    <div className="m-2 max-w-[1600px] mx-auto filter-section sticky top-0 bg-white z-[9999]">
+    <div className='p-8 flex  gap-3 pt-9'>
         <div className='rounded-md bg-slate-200 p-2 pl-4 pr-4 font-[15px]'>Filter</div>
-        <div className='rounded-md bg-slate-200 p-2 pl-4 pr-4 font-[15px]'>Filter</div>
-        <div className='rounded-md bg-slate-200 p-2 pl-4 pr-4 font-[15px]'>Filter</div>
-        <div className='rounded-md bg-slate-200 p-2 pl-4 pr-4 font-[15px]'>Filter</div>
+        <div className='rounded-md bg-slate-200 p-2 pl-4 pr-4 font-[15px]'>Sort by</div>
+        
 
     </div>
     </div>
@@ -45,7 +58,7 @@ const [topResturent, setTopResturent] = useState([])
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 justify-items-center">
                     
                     {
-                      topResturent.map(
+                      topRestaurant.map(
                         (d, index) =>{
                            return <Card {...d} />
                             

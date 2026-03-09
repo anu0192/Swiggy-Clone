@@ -4,7 +4,7 @@ import { LuDot } from 'react-icons/lu'
 
 export const Card = (props) => {
   return (
-    <div className='w-full md:w-[273px] shrink-0 grow-0 group'>
+    <div className='w-[273px] shrink-0 grow mb-3'>
         <div className='group  h-[182px] rounded-[15px] overflow-hidden relative '>
             <img  className='group-hover:scale-110 duration-150  object-cover w-full h-full' src={"/images/" + props.image} alt="" />
             <div className='absolute w-full h-full top-0 card-gradient text-white flex p-2 text-[20px] items-end uppercase font-bold tracking-tighter'>
@@ -15,13 +15,14 @@ export const Card = (props) => {
            
 
         </div>
-        <div className=' pl-5'>
+        <div className='pl-5'>
          <div className='pt-2 text-[20px] font-bold overflow-hidden whitespace-nowrap truncate'>{props.title}</div>
          <div className='flex gap-1'>
-            <Star />
-            <div className='m-0'>{props.rating}</div>
+      
+            <Star className='inline ' />
+            {props.rating}
             <LuDot className="w-7 h-6 self-center "/>
-            <div>{props.minTime}-{props.maxTime}<span className='ml-2'>mins</span></div>
+            <span className='ml-2 ml-[-3px]'> {props.minTime} - {props.maxTime} mins</span>
          </div>
 
            <div className='text-[#4B5563] overflow-hidden whitespace-nowrap truncate'>

@@ -7,7 +7,7 @@ import { LuHandHelping } from 'react-icons/lu';
 import { MdAssignmentInd } from 'react-icons/md';
 import { IoMdCart } from 'react-icons/io';
 
-export const Header = () => {
+export const Header = ({hideHeader}) => {
 
 
     const [toggle, setToggle] = useState(false);
@@ -59,7 +59,8 @@ export const Header = () => {
     <div className='black-overlay w-full h-full fixed duration-500 ' style={{
         opacity: toggle ? 1:0,
         visibility: toggle ? 'visible': 'hidden', 
-    }}   onClick={hideSideMenu}>  
+        zIndex:9999999999
+    }}   onClick={hideSideMenu}>   
 
         <div  onClick={(e)=>{
             e.stopPropagation();
@@ -76,8 +77,8 @@ export const Header = () => {
 
 
 
-    <header className=' p-12 shadow-xl sticky top-0 bg-white z-[9999]'>
-        <div className='max-w-[1300px] mx-auto flex items-center'>
+    <header className={`p-10 shadow-xl sticky top-0 bg-white z-[9999] duration-300 transition-all ${ hideHeader ? "-translate-y-full" : "translate-y-0"}`}>
+        <div className='max-w-[1200px] mx-auto flex items-center'>
             <div className='w-[100px]'>
                 <img className='w-full'   src='images/logo.png'/>
             </div>
