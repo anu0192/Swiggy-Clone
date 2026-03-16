@@ -6,6 +6,7 @@ import { Category } from './pages/Category'
 import { TopRes } from './pages/TopRes'
 import { OnlineDelivery } from './pages/OnlineDelivery'
 import { Banner_Section } from './pages/Banner_Section'
+import { Footer } from './pages/Footer'
 
 function App() {
   const [hideHeader, setHideHeader] = useState(false)
@@ -17,6 +18,8 @@ function App() {
       <TopRes />
       <OnlineDelivery hideHeader={hideHeader} setHideHeader={setHideHeader}/>
       <Banner_Section />
+      <Footer />
+      
     </StrictMode>
   )
 }

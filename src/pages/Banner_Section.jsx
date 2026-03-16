@@ -18,6 +18,21 @@ export const Banner_Section = () => {
 
     ];
 
+    const place = [
+      "Banglore",
+      "Gurgaon",
+      "Hyderabad",
+      "Delhi",
+      "Mumbai",
+      "Pune",
+      "Kolkata",
+      "Chennai",
+      "Ahemdabad",
+      "Chandigarh",
+      "Jaipur"
+
+    ];
+
 
   return (
     <>
@@ -32,17 +47,34 @@ export const Banner_Section = () => {
                 (city, index) => (
                   <div 
                   key ={index} 
-                  className='border border-grey-300 rounded-xl p-5 text-center font-medium cursor-pointer hover:shadow-md'>
+                  className='border border-grey-300 rounded-xl p-4 text-center font-medium cursor-pointer hover:shadow-md'>
                     Order food Online in {city}  
                     </div>
                     ))}
 
-                    <div className='border border-grey-300 rounded-xl p-5 text-center text-orange-500 font-semibold cursor-pointer flex items-center gap-2 text-[18px] justify-center'>show more <IoIosArrowDown /></div>
+                    <div className='border border-grey-300 rounded-xl p-4 text-center text-orange-500 font-semibold cursor-pointer flex items-center gap-2 text-[18px] justify-center'>show more <IoIosArrowDown /></div>
               </div>
             </div>
             </div>
 
-    </>
-   
+
+            <div className=' max-w-[1200px] mt-16 mx-auto'>
+              <h2 className='text-[25px] font-bold mb-2'>Cities with grocery delivery</h2>
+    
+            <div className=' grid grid-cols-4 gap-6'>
+             { place.map(
+                (city, index) => (
+                  <div 
+                  key ={index} 
+                  className='border border-grey-300 rounded-xl p-4 text-center font-medium cursor-pointer hover:shadow-md'>
+                    Order grocery delivery in {city}  
+                    </div>
+                    ))}
+
+                    <div className='border border-grey-300 rounded-xl p-4 text-center text-orange-500 font-semibold cursor-pointer flex items-center gap-2 text-[18px] justify-center'>show more <IoIosArrowDown /></div>
+              </div>
+            </div>
+
+    </> 
   )
 }
